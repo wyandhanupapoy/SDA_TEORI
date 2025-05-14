@@ -1,0 +1,23 @@
+/*
+  Nama File: binary_tree_anggota2.h 
+  Pembuat: Dzakir Tsabit Asy Syafiq
+  NIM: 241511071
+  Kelas: JTK-1C
+  Jurusan: Teknik Komputer dan Informatika
+  Prodi: D3 Teknik Informatika
+
+  Tujuan: Implementasi Binary Tree dengan traversal inorder secara non-rekursif.
+*/
+
+#ifndef BINARY_TREE_ANGGOTA2_H
+#define BINARY_TREE_ANGGOTA2_H
+
+int isEmpty(struct Stack* stack);
+int isFull(struct Stack* stack);
+void push(struct Stack* stack, struct Node* item);
+void preorderTraversal(struct Node* root);
+struct Node* pop(struct Stack* stack);
+struct Node* peek(struct Stack* stack);
+void postorderTraversal(struct Node* root);
+struct Node* search(struct Node* root, int key);
+#endif
