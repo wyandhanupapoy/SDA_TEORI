@@ -93,3 +93,36 @@ void inorderTraversal(struct Node* root) {
     free(stack->array);
     free(stack);
 }
+
+// Fungsi untuk mencetak traversal level order (breadth-first)
+void levelOrderTraversal(struct Node* root) {
+    if (root == NULL)
+        return;
+    
+    // Buat queue untuk level order traversal
+    struct Queue* queue = createQueue(100);
+    
+    // Enqueue root
+    enqueue(queue, root);
+    
+    printf("Level Order Traversal: ");
+    
+    while (!isQueueEmpty(queue)) {
+        // Dequeue node dan cetak
+        struct Node* node = dequeue(queue);
+        printf("%d ", node->data);
+        
+        // Enqueue child nodes
+        if (node->left != NULL)
+            enqueue(queue, node->left);
+            
+        if (node->right != NULL)
+            enqueue(queue, node->right);
+    }
+    
+    printf("\n");
+    
+    // Bersihkan queue
+    free(queue->array);
+    free(queue);
+}

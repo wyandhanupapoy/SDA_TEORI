@@ -15,4 +15,10 @@ struct Stack {
     struct Node** array;
 };
 
+struct Queue {
+    int front, rear, size;
+    unsigned capacity;
+    struct Node** array;
+};
+
 #endif

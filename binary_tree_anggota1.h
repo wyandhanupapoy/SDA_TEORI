@@ -19,5 +19,6 @@
 // Fungsi Deklarasi
 void insert(struct Node** root, int data);
 void inorderTraversal(struct Node* root);
+void levelOrderTraversal(struct Node* root);
 
 #endif
