@@ -12,6 +12,8 @@
 #ifndef BINARY_TREE_ANGGOTA2_H
 #define BINARY_TREE_ANGGOTA2_H
 
+struct Node* createNode(int data);
+struct Stack* createStack(int size);
 int isEmpty(struct Stack* stack);
 int isFull(struct Stack* stack);
 void push(struct Stack* stack, struct Node* item);
