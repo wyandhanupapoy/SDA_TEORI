@@ -8,31 +8,9 @@
 
   Tujuan: Implementasi Binary Tree dengan traversal inorder secara non-rekursif.
 */
-#include <stdio.h>
-#include <stdlib.h>
+#include "binary_tree_anggota2.h"
 
 // Struktur node untuk binary tree
-struct Node {
-    int data;
-    struct Node* left;
-    struct Node* right;
-};
-
-// Fungsi untuk membuat node baru
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
-
-// Struktur untuk stack yang digunakan dalam traversal non-rekursif
-struct Stack {
-    int size;
-    int top;
-    struct Node** array;
-};
 
 // Fungsi untuk membuat stack baru
 struct Stack* createStack(int size) {

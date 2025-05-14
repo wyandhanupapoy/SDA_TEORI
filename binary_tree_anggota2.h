@@ -11,6 +11,23 @@
 
 #ifndef BINARY_TREE_ANGGOTA2_H
 #define BINARY_TREE_ANGGOTA2_H
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+// Struktur untuk stack yang digunakan dalam traversal non-rekursif
+struct Stack {
+    int size;
+    int top;
+    struct Node** array;
+};
+
 
 struct Node* createNode(int data);
 struct Stack* createStack(int size);
