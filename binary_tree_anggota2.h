@@ -6,7 +6,8 @@
   Jurusan: Teknik Komputer dan Informatika
   Prodi: D3 Teknik Informatika
 
-  Tujuan: Implementasi Binary Tree dengan traversal inorder secara non-rekursif.
+  Tujuan: Implementasi Binary Tree dengan traversal preorder dan postorder secara non-rekursif, 
+          serta implementasi fungsi pencarian (search) pada binary tree secara iteratif.
 */
 
 #ifndef BINARY_TREE_ANGGOTA2_H
