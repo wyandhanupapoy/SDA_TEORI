@@ -1,3 +1,13 @@
+/*
+  Nama File: binary_tree_anggota1.h
+  Pembuat: Wyandhanu Maulidan Nugraha
+  NIM: 241511092
+  Kelas: JTK-1C
+  Jurusan: Teknik Komputer dan Informatika
+  Prodi: D3 Teknik Informatika
+
+  Tujuan: Header file untuk implementasi Binary Tree dengan traversal inorder secara non-rekursif.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +25,7 @@ struct Stack {
     struct Node** array;
 };
 
-// Fungsi untuk membuat stack baru
+// Fungsi Deklarasi
 struct Node* createNode(int data);
 struct Stack* createStack(int size);
 int isEmpty(struct Stack* stack);

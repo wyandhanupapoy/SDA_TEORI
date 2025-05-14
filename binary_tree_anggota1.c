@@ -1,6 +1,14 @@
-/* Bagian 1: Implementasi Binary Tree Non-Rekursif */
-#include "binary_tree_anggota1.h"
+/*
+  Nama File: binary_tree_anggota1.c
+  Pembuat: Wyandhanu Maulidan Nugraha
+  NIM: 241511092
+  Kelas: JTK-1C
+  Jurusan: Teknik Komputer dan Informatika
+  Prodi: D3 Teknik Informatika
 
+  Tujuan: Implementasi Binary Tree dengan traversal inorder secara non-rekursif.
+*/
+#include "binary_tree_anggota1.h"
 
 // Fungsi untuk membuat node baru
 struct Node* createNode(int data) {

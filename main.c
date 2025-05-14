@@ -1,4 +1,13 @@
-// Fungsi utama untuk Bagian 1
+/*
+  Nama File: main.c
+  Pembuat: Wyandhanu Maulidan Nugraha
+  NIM: 241511092
+  Kelas: JTK-1C
+  Jurusan: Teknik Komputer dan Informatika
+  Prodi: D3 Teknik Informatika
+
+  Tujuan: Implementasi Binary Tree dengan traversal inorder secara non-rekursif.
+*/
 #include "binary_tree_anggota1.h"
 
 int main() {
