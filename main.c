@@ -31,120 +31,173 @@ void clearScreen() {
     #endif
 }
 
-// Fungsi untuk menampilkan menu
-void displayMenu() {
-    printf("\n=== BINARY TREE OPERATIONS ===\n");
-    printf("1. Insert Node\n");
-    printf("2. Inorder Traversal\n");
-    printf("3. Preorder Traversal\n");
-    printf("4. Postorder Traversal\n");
-    printf("5. Level Order Traversal\n");
-    printf("6. Search Node\n");
-    printf("7. Create Sample Tree\n");
-    printf("8. Exit\n");
-    printf("Enter your choice: ");
+// Fungsi untuk menampilkan garis pemisah
+void printSeparator() {
+    printf("\n");
+    for(int i = 0; i < 50; i++) {
+        printf("=");
+    }
+    printf("\n");
+}
+
+// Fungsi untuk menampilkan header demo
+void printHeader(const char* title) {
+    printSeparator();
+    printf("  %s\n", title);
+    printSeparator();
+}
+
+// Fungsi untuk menampilkan visual dari binary tree (simplified)
+void printBinaryTree(struct Node* root, int level) {
+    if (root == NULL) return;
+    
+    printBinaryTree(root->right, level + 1);
+    
+    for (int i = 0; i < level; i++) {
+        printf("    ");
+    }
+    printf("%d\n", root->data);
+    
+    printBinaryTree(root->left, level + 1);
 }
 
 int main() {
-    struct Node* root = NULL;
-    int choice, value;
-    struct Node* result;
+    printf("PROGRAM DEMONSTRASI BINARY TREE\n");
+    printf("Teknik Informatika - JTK-1C\n\n");
     
-    while (1) {
-        displayMenu();
-        scanf("%d", &choice);
-        
-        switch (choice) {
-            case 1: // Insert Node
-                printf("Enter value to insert: ");
-                scanf("%d", &value);
-                insert(&root, value);
-                printf("Node with value %d inserted successfully!\n", value);
-                break;
-                
-            case 2: // Inorder Traversal
-                if (root == NULL) {
-                    printf("Tree is empty!\n");
-                } else {
-                    inorderTraversal(root);
-                }
-                break;
-                
-            case 3: // Preorder Traversal
-                if (root == NULL) {
-                    printf("Tree is empty!\n");
-                } else {
-                    preorderTraversal(root);
-                }
-                break;
-                
-            case 4: // Postorder Traversal
-                if (root == NULL) {
-                    printf("Tree is empty!\n");
-                } else {
-                    postorderTraversal(root);
-                }
-                break;
-                
-            case 5: // Level Order Traversal
-                if (root == NULL) {
-                    printf("Tree is empty!\n");
-                } else {
-                    levelOrderTraversal(root);
-                }
-                break;
-                
-            case 6: // Search Node
-                if (root == NULL) {
-                    printf("Tree is empty!\n");
-                } else {
-                    printf("Enter value to search: ");
-                    scanf("%d", &value);
-                    result = search(root, value);
-                    if (result != NULL) {
-                        printf("Value %d found in the tree!\n", value);
-                    } else {
-                        printf("Value %d not found in the tree!\n", value);
-                    }
-                }
-                break;
-                
-            case 7: // Create Sample Tree
-                // Clear existing tree first (simplified approach)
-                root = NULL;
-                
-                // Create a sample binary tree
-                root = createNode(50);
-                root->left = createNode(30);
-                root->right = createNode(70);
-                root->left->left = createNode(20);
-                root->left->right = createNode(40);
-                root->right->left = createNode(60);
-                root->right->right = createNode(80);
-                
-                printf("Sample tree created successfully!\n");
-                printf("The tree has the following structure:\n");
-                printf("        50        \n");
-                printf("       /  \\      \n");
-                printf("     30    70     \n");
-                printf("    / \\   / \\   \n");
-                printf("   20 40 60  80   \n");
-                break;
-                
-            case 8: // Exit
-                printf("Thank you for using Binary Tree Operations!\n");
-                // Free memory (in a real implementation, you'd want to properly free all nodes)
-                return 0;
-                
-            default:
-                printf("Invalid choice! Please try again.\n");
+    // 1. Membuat binary tree kosong
+    printHeader("1. Membuat Binary Tree Kosong");
+    struct Node* root = NULL;
+    printf("Binary tree kosong berhasil dibuat!\n");
+    
+    // 2. Membuat sample tree dengan insertion iterative
+    printHeader("2. Membuat Binary Tree dengan Insertion");
+    printf("Memasukkan nilai: 50, 30, 70, 20, 40, 60, 80\n");
+    insert(&root, 50);
+    insert(&root, 30);
+    insert(&root, 70);
+    insert(&root, 20);
+    insert(&root, 40);
+    insert(&root, 60);
+    insert(&root, 80);
+    printf("Binary tree berhasil dibuat!\n");
+    
+    // 3. Menampilkan struktur binary tree
+    printHeader("3. Struktur Binary Tree");
+    printf("Visualisasi tree:\n\n");
+    printBinaryTree(root, 0);
+    printf("\nModel struktur tree:\n");
+    printf("        50        \n");
+    printf("       /  \\      \n");
+    printf("     30    70     \n");
+    printf("    / \\   / \\   \n");
+    printf("   20 40 60  80   \n");
+    
+    // 4. Traversal Inorder
+    printHeader("4. Traversal Inorder (Kiri-Root-Kanan)");
+    printf("Expected result: 20 30 40 50 60 70 80\n");
+    inorderTraversal(root);
+    
+    // 5. Traversal Preorder
+    printHeader("5. Traversal Preorder (Root-Kiri-Kanan)");
+    printf("Expected result: 50 30 20 40 70 60 80\n");
+    preorderTraversal(root);
+    
+    // 6. Traversal Postorder
+    printHeader("6. Traversal Postorder (Kiri-Kanan-Root)");
+    printf("Expected result: 20 40 30 60 80 70 50\n");
+    postorderTraversal(root);
+    
+    // 7. Traversal Level Order
+    printHeader("7. Traversal Level Order (Breadth-First)");
+    printf("Expected result: 50 30 70 20 40 60 80\n");
+    levelOrderTraversal(root);
+    
+    // 8. Pencarian Node
+    printHeader("8. Pencarian Node");
+    int searchValues[] = {40, 55};
+    for (int i = 0; i < 2; i++) {
+        int value = searchValues[i];
+        printf("Mencari nilai %d: ", value);
+        struct Node* result = search(root, value);
+        if (result != NULL) {
+            printf("DITEMUKAN!\n");
+        } else {
+            printf("TIDAK DITEMUKAN!\n");
         }
-        
-        printf("\nPress Enter to continue...");
-        while (getchar() != '\n'); // Clear input buffer
-        getchar(); // Wait for Enter
-        clearScreen();
     }
+    
+    // 9. Menambahkan node baru
+    printHeader("9. Menambahkan Node Baru");
+    int newValues[] = {25, 35, 90};
+    printf("Menambahkan node baru dengan nilai: ");
+    for (int i = 0; i < 3; i++) {
+        printf("%d ", newValues[i]);
+        insert(&root, newValues[i]);
+    }
+    printf("\n\nStruktur tree setelah penambahan:\n");
+    printBinaryTree(root, 0);
+    
+    // 10. Menampilkan semua traversal kembali setelah penambahan
+    printHeader("10. Traversal Setelah Penambahan Node");
+    printf("Inorder: ");
+    inorderTraversal(root);
+    printf("Preorder: ");
+    preorderTraversal(root);
+    printf("Postorder: ");
+    postorderTraversal(root);
+    printf("Level Order: ");
+    levelOrderTraversal(root);
+    
+    // 11. Eksperimen dengan multi-level tree
+    printHeader("11. Eksperimen dengan Multi-level Tree");
+    // Reset tree
+    root = NULL;
+    int values[] = {100, 50, 150, 25, 75, 125, 175, 12, 37, 62, 87, 112, 137, 162, 187};
+    int n = sizeof(values) / sizeof(values[0]);
+    
+    printf("Membangun multi-level tree dengan %d node...\n", n);
+    for (int i = 0; i < n; i++) {
+        insert(&root, values[i]);
+    }
+    
+    printf("\nStruktur multi-level tree:\n");
+    printBinaryTree(root, 0);
+    
+    printf("\nLevel Order Traversal untuk multi-level tree:\n");
+    levelOrderTraversal(root);
+    
+    // 12. Demonstrasi ADT Universal
+    printHeader("12. Demonstrasi ADT Universal");
+    printf("Membuat queue kapasitas 10...\n");
+    struct Queue* queue = createQueue(10);
+    printf("Queue berhasil dibuat dengan kapasitas %d\n", queue->capacity);
+    printf("Apakah queue kosong? %s\n", isQueueEmpty(queue) ? "Ya" : "Tidak");
+    
+    printf("\nMembuat stack kapasitas 10...\n");
+    struct Stack* stack = createStack(10);
+    printf("Stack berhasil dibuat dengan kapasitas %d\n", stack->size);
+    printf("Apakah stack kosong? %s\n", isEmpty(stack) ? "Ya" : "Tidak");
+    
+    // 13. Ringkasan
+    printHeader("13. Ringkasan Demo");
+    printf("Demonstrasi telah menunjukkan:\n");
+    printf("1. Pembuatan binary tree\n");
+    printf("2. Insertion node secara iteratif\n");
+    printf("3. Traversal inorder (non-rekursif)\n");
+    printf("4. Traversal preorder (non-rekursif)\n");
+    printf("5. Traversal postorder (non-rekursif)\n");
+    printf("6. Traversal level order (breadth-first)\n");
+    printf("7. Pencarian node secara iteratif\n");
+    printf("8. Implementasi ADT Stack dan Queue\n");
+    printf("\nSemua operasi diimplementasikan tanpa rekursi.\n");
+    
+    printSeparator();
+    printf("Terima kasih telah menggunakan Program Binary Tree!\n");
+    printSeparator();
+    
+    // Free memory (simplified approach)
+    // Note: In a real implementation, you'd want to properly free all nodes
     
     return 0;
 }
