@@ -98,3 +98,4 @@ struct Node* search(struct Node* root, int key) {
     
     return NULL; // key tidak ditemukan
 }
+
